@@ -67,7 +67,7 @@ def test_handle_post_invalid_credentials(client):
     with patch("api.ddb", return_value=False):  # Mock ddb to always return False.
         response = client.post(
             "/handle_post",
-            data={"username": "invalid_user", "password": "invalid_pass"},
+            data={"username": "'or 1=1--", "password": "invalid_pass"},
         )
         assert response.status_code == 200
         assert b"invalid credentials!" in response.data
