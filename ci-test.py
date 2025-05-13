@@ -3,6 +3,14 @@ from unittest.mock import patch
 from api import app
 
 
+
+#pip-audit
+#safety check
+#bandit -r . --exit-zero
+
+#pytest ci-test.py -v
+
+
 @pytest.fixture
 def client():
     """Fixture to provide a test client for the api."""
@@ -15,7 +23,6 @@ def test_view_form(client):
     """Test that the login form is rendered correctly."""
     response = client.get("/")
     assert response.status_code == 200
-    # Assuming "login.html" contains some unique string like "Login Form".
     assert b"Login Form" in response.data
 
 
